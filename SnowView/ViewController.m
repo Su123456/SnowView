@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "Snow.h"
 @interface ViewController ()
 
 @end
@@ -16,14 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-100, 0, 600, 568)];
+    imageView.clipsToBounds = true;
+    imageView.image         = [UIImage imageNamed:@"bg"];
+    [self.view addSubview:imageView];
+
+    [self snow];
+    
 }
 
+- (void)snow{
+    UIView   *snowView = [[UIView alloc]initWithFrame:CGRectMake(-150, -100, 320, 50)];
+    snowView.clipsToBounds = true;
+    [self.view addSubview:snowView];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [[Snow new] creatSnow:self.view.layer SuperView:snowView];
 }
-
-
 @end
